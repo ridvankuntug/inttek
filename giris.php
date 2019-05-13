@@ -6,7 +6,7 @@
       <!-- Site İçeriği Başlangıcı -->
       <?php
         if($_SESSION["kullaniciYetki"] > 0){
-          echo '<meta http-equiv="refresh" content="5;URL=index.php">';
+          echo '<meta http-equiv="refresh" content="0;URL=index.php">';
         }
         else{
       ?>
@@ -36,8 +36,8 @@
         </div>
       </form>
 
-      <!-- Site içeriği Sonu -->
       <?php } ?>
+      <!-- Site içeriği Sonu -->
     </div>
     <?php require("inc/right-menu.php"); ?><!--TODO:-->
   </div>

@@ -4,7 +4,12 @@
   <div class="row">
     <div class="col-sm-9">
       <!-- Site İçeriği Başlangıcı -->
-
+      <?php
+        if($_SESSION["kullaniciYetki"] > 0){
+          echo '<meta http-equiv="refresh" content="0;URL=index.php">';
+        }
+        else{
+      ?>
       <script type="text/javascript">
         function uyeOl1(){
 
@@ -41,6 +46,7 @@
           <input type="button" class="btn btn-primary" onclick="uyeOl1()" value="Kaydol">
         </div>
       </form>
+        <?php } ?>
 
       <!-- Site içeriği Sonu -->
     </div>
