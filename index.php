@@ -11,7 +11,9 @@
       <br>
       <h2>Hemen Aşağıdaki adımları takip edin</h2>
       <div class="fakeimg">Fake Image</div>
-      <p><a href="#">Üyelik alın</a> ya da <a href="#">oturum açın.</a></p>
+      <?php if($_SESSION["kullaniciYetki"] < 1){ ?>
+        <p><a href="#">Üyelik alın</a> ya da <a href="">oturum açın.</a></p>
+      <?php } ?>
       <p>Bilgilerinizi doldurun.</p>
       <p>Belgenizi indirin.</p>
       <!-- Site içeriği Sonu -->
