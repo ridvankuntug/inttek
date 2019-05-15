@@ -10,7 +10,47 @@
         }
         else{
       ?>
-      <form class="col-6" method="POST" action="cv.php">
+      <script type="text/javascript">
+        function cvKaydet1(){
+
+          var isim = $("#isim").val();
+          var soyisim = $("#soyisim").val();
+          var yas = $("#yas").val();
+          var memleket = $("#memleket").val();
+
+          var sehir = $("#sehir").val();
+          var okul = $("#okul").val();
+          var bolum = $("#bolum").val();
+
+          var yetenek1 = $("#yetenek1").val();
+          var yderecesi1 = $("#yderecesi1").val();
+          var yetenek2 = $("#yetenek2").val();
+          var yderecesi2 = $("#yderecesi2").val();
+          var yetenek3 = $("#yetenek3").val();
+          var yderecesi3 = $("#yderecesi3").val();
+          var yetenek4 = $("#yetenek4").val();
+          var yderecesi4 = $("#yderecesi4").val();
+          var yetenek5 = $("#yetenek5").val();
+          var yderecesi5 = $("#yderecesi5").val();
+          var yetenek6 = $("#yetenek6").val();
+          var yderecesi6 = $("#yderecesi6").val();
+
+          var hakkimda = $("#hakkimda").val();
+
+          $.post('cv-kaydet.php', {isim: isim, soyisim: soyisim, yas: yas, memleket: memleket,
+          sehir: sehir, okul: okul, bolum: bolum,
+          yetenek1: yetenek1, yderecesi1: yderecesi1,
+          yetenek2: yetenek2, yderecesi2: yderecesi2,
+          yetenek3: yetenek3, yderecesi3: yderecesi3,
+          yetenek4: yetenek4, yderecesi4: yderecesi4,
+          yetenek5: yetenek5, yderecesi5: yderecesi5,
+          yetenek6: yetenek6, yderecesi6: yderecesi6,
+          hakkimda: hakkimda}, function (gelen_cevap) {
+              success:$('#sonucForm').html(gelen_cevap);
+          });
+        }
+      </script>
+      <form class="col-6">
         <h5>Kişisel</h5>
         <div class="form-group">
           <label for="isim">İsim</label>
@@ -100,9 +140,9 @@
         </div>
 
         <div class="alert alert-info" role="alert"> Açılan sayfayı kaydederek istediğiniz dosya biçimine dönüştürebilirsiniz. (CTRL+S) </div>
-
+        <div class="form-group" id="sonucForm"></div>
         <div class="form-group">
-          <input type="submit" class="btn btn-primary" value="Oluştur" formtarget="_blank">
+          <input type="button" class="btn btn-primary" onclick="cvKaydet1()" value="Kaydet">
         </div>
       </form>
         <?php } ?>

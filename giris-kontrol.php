@@ -11,18 +11,18 @@
     echo '<div class="alert alert-danger" role="alert"> Boş bıraktığınız alanlar var. </div>';
   }
   else{
-    $sifre1 = sha1(md5($sifre1));
-    $query = $db->query("SELECT * FROM kullanici WHERE
-    kullanici_eposta = '$eposta1' AND kullanici_sifre = '$sifre1'
-    ")->fetch(PDO::FETCH_ASSOC);
-    if ( $query ){
-        $_SESSION["kullaniciAdi"] = ucwords(strtolower($query["kullanici_ad"]));
-        $_SESSION["kullaniciYetki"] = $query["kullanici_yetki"];
-        echo '<div class="alert alert-success" role="alert"> Hoşgeldin ' .$_SESSION["kullaniciAdi"]. '. Birazdan anasayfaya yönlendirileceksin. Ya da beklemek istemiyorsan <a href="index.php">tıkla</a>.</div>';
-        echo '<meta http-equiv="refresh" content="5;URL=index.php">';
-
-      }
-    else{
+    try{
+      $sifre1 = sha1(md5($sifre1));
+      $query = $db->query("SELECT * FROM kullanici WHERE
+        kullanici_eposta = '$eposta1' AND kullanici_sifre = '$sifre1'
+      ")->fetch(PDO::FETCH_ASSOC);
+      $_SESSION["kullaniciAdi"] = ucwords(strtolower($query["kullanici_ad"]));
+      $_SESSION["kullaniciYetki"] = $query["kullanici_yetki"];
+      $_SESSION["kullaniciID"] = $query["kullanici_id"];
+      echo '<div class="alert alert-success" role="alert"> Hoşgeldin ' .$_SESSION["kullaniciAdi"]. '. Birazdan anasayfaya yönlendirileceksin. Ya da beklemek istemiyorsan <a href="index.php">tıkla</a>.</div>';
+      echo '<meta http-equiv="refresh" content="5;URL=index.php">';
+    }
+    catch(Exception $e) {
       echo '<div class="alert alert-danger" role="alert"> Kullanıcı bulunamadı. </div>';
     }
   }

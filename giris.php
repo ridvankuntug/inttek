@@ -32,7 +32,7 @@
         </div>
         <div class="form-group" id="sonucForm"></div>
         <div class="form-group">
-        <input type="button" class="btn btn-primary" onclick="girisYap1()" value="Giriş">
+          <input type="button" class="btn btn-primary" onclick="girisYap1()" value="Giriş">
         </div>
       </form>
 

@@ -1,29 +1,43 @@
 <?php require("funcs/headerphp.php");
 
-$isim = $_POST["isim"];
-$soyisim = $_POST["soyisim"];
-$yas = $_POST["yas"];
-$memleket = $_POST["memleket"];
+if(!isset($_GET["id"])){
+  echo '<div class="alert alert-danger" role="alert"> Bir sorun oluştu. </div>';
+}
+else{
 
-$sehir = $_POST["sehir"];
-$okul = $_POST["okul"];
-$bolum = $_POST["bolum"];
+  $id = $_GET["id"];
+  try{
+    $query = $db->query("SELECT * FROM cv WHERE
+      id = '$id'
+    ")->fetch(PDO::FETCH_ASSOC);
+    $isim = $query["isim"];
+    $soyisim = $query["soyisim"];
+    $yas = $query["yas"];
+    $memleket = $query["memleket"];
 
-$yetenek1 = $_POST["yetenek1"];
-$yderecesi1 = $_POST["yderecesi1"];
-$yetenek2 = $_POST["yetenek2"];
-$yderecesi2 = $_POST["yderecesi2"];
-$yetenek3 = $_POST["yetenek3"];
-$yderecesi3 = $_POST["yderecesi3"];
-$yetenek4 = $_POST["yetenek4"];
-$yderecesi4 = $_POST["yderecesi4"];
-$yetenek5 = $_POST["yetenek5"];
-$yderecesi5 = $_POST["yderecesi5"];
-$yetenek6 = $_POST["yetenek6"];
-$yderecesi6 = $_POST["yderecesi6"];
+    $sehir = $query["sehir"];
+    $okul = $query["okul"];
+    $bolum = $query["bolum"];
 
-$hakkimda = $_POST["hakkimda"];
+    $yetenek1 = $query["yetenek1"];
+    $yderecesi1 = $query["yderecesi1"];
+    $yetenek2 = $query["yetenek2"];
+    $yderecesi2 = $query["yderecesi2"];
+    $yetenek3 = $query["yetenek3"];
+    $yderecesi3 = $query["yderecesi3"];
+    $yetenek4 = $query["yetenek4"];
+    $yderecesi4 = $query["yderecesi4"];
+    $yetenek5 = $query["yetenek5"];
+    $yderecesi5 = $query["yderecesi5"];
+    $yetenek6 = $query["yetenek6"];
+    $yderecesi6 = $query["yderecesi6"];
 
+    $hakkimda = $query["hakkimda"];
+
+  }
+  catch(Exception $e) {
+    echo 'Message: ' .$e->getMessage();
+  }
 ?>
 
 <style>
@@ -338,7 +352,8 @@ $hakkimda = $_POST["hakkimda"];
 
 
   <div id="alt">
-    &copy; <a href="https://twitter.com/RidvanKuntug">Rıdvan Küntuğ</a>
+    <b>&copy; <a href="https://twitter.com/RidvanKuntug">Rıdvan Küntuğ</a></b>
   </div>
 
 </div>
+<?php } ?>
