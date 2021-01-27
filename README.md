@@ -1,1 +1,1 @@
-deneme2
+CV oluşturucu
